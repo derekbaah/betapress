@@ -19,6 +19,12 @@ gem 'uglifier', '>= 1.3.0'
 gem 'devise', '~> 4.5'
 #bootstrap for styling
 gem 'bootstrap', '~> 4.2', '>= 4.2.1'
+#carrierwave for image upload
+gem 'carrierwave', '~> 1.3', '>= 1.3.1'
+#jquery for bootstrap
+gem 'jquery-rails'
+gem 'will_paginate', '3.1.5'
+gem 'bootstrap-will_paginate', '1.0.0'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'

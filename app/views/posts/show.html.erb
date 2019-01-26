@@ -1,14 +1,86 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col-lg-8">
 
-<p>
-  <strong>Title:</strong>
-  <%= @post.title %>
-</p>
+          <!-- Title -->
+          <h1 class="mt-4"><%= @post.title %></h1>
 
-<p>
-  <strong>Content:</strong>
-  <%= @post.content %>
-</p>
+          <!-- Author -->
+          <p class="lead">
+            by
+            <a href="#">Author Name</a> in <%= @post.categories.pluck(:name).join(",") if @post.categories.present? %>
+          </p>
 
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
+          <hr>
+
+          <!-- Date/Time -->
+          <p><%= @post.created_at %></p>
+
+          <hr>
+
+          <!-- Preview Image -->
+          
+          <%= image_tag(@post.featureimage_url, class: 'img-fluid rounded') if @post.featureimage.present? %>
+   
+
+          <hr>
+
+          <!-- Post Content -->
+          
+          <p><%= @post.content %></p>
+          
+          <br/>          
+    
+          <%= link_to "Edit", edit_post_path, class: "btn btn-success" %>
+          <%= link_to "Delete", post_path(@post), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger" %>
+
+          <hr>
+
+          <!-- Comments Form -->
+          <%= render 'comments/form' %>
+
+          <% if @post.comments.any? %>
+            <h5>Comments</h5>
+            <%= render partial: 'comments/comment', collection: @post.comments.reverse %>
+            
+          <% end %>
+
+          <!-- Comment with nested comments -->
+         
+
+        </div>
+  
+  <div class="col-md-4">
+
+          <!-- Search Widget -->
+          <div class="card my-4">
+            <h5 class="card-header">Search</h5>
+            <div class="card-body">
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search for...">
+                <span class="input-group-btn">
+                  <button class="btn btn-secondary" type="button">Go!</button>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Categories Widget -->
+          <div class="card my-4">
+            <h5 class="card-header">Categories</h5>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-lg-6">
+                  <ul class="list-unstyled mb-0">
+                    <% @categories.each do |category| %>
+                    <li>
+                      <%= link_to category.name, category %></a>
+                    </li>
+                    <% end %>
+                  </ul>
+                </div>
+                
+              </div>
+            </div>
+          </div>
+</div>
+</div>

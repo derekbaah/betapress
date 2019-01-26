@@ -1,0 +1,13 @@
+@import "bootstrap";
+
+nav{
+  margin-bottom: 20px;
+}
+
+h5.card-title a:hover{
+  text-decoration: none;
+}
+
+a#navbarDropdownMenuLink, .navbar-light .navbar-nav .nav-link, .nav-link{
+  color: #fff;
+}
