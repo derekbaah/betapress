@@ -7,13 +7,13 @@
           <!-- Author -->
           <p class="lead">
             by
-            <a href="#">Author Name</a> in <%= @post.categories.pluck(:name).join(",") if @post.categories.present? %>
+            <a href="#"><%= @post.user.firstname + ' ' + @post.user.lastname %></a> in <%= @post.categories.pluck(:name).join(",") if @post.categories.present? %>
           </p>
 
           <hr>
 
           <!-- Date/Time -->
-          <p><%= @post.created_at %></p>
+          <p><%= @post.created_at.strftime("%b %d") %></p>
 
           <hr>
 
@@ -26,12 +26,13 @@
 
           <!-- Post Content -->
           
-          <p><%= @post.content %></p>
+          <p><%= simple_format(@post.content) %></p>
           
           <br/>          
-    
-          <%= link_to "Edit", edit_post_path, class: "btn btn-success" %>
-          <%= link_to "Delete", post_path(@post), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger" %>
+          <% if current_user %>
+            <%= link_to "Edit", edit_post_path, class: "btn btn-success" %>
+            <%= link_to "Delete", post_path(@post), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger" %>
+          <% end %>
 
           <hr>
 
