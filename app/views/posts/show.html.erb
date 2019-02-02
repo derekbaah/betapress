@@ -35,7 +35,17 @@
           <% end %>
 
           <hr>
-
+    
+          <div class="card">
+            <h3 class="card-header">Meet the Author</h3>
+            <div class="card-body">
+              <h3><%= @post.user.firstname + ' ' + @post.user.lastname %></h3>
+              <p><%= @post.user.userbio %></p>
+            </div>  
+          </div>
+          
+          <hr>
+    
           <!-- Comments Form -->
           <%= render 'comments/form' %>
 

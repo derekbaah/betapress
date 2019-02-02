@@ -1,0 +1,12 @@
+<div class="row">
+  <% @users.each do |user| %>
+  <div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title"><%= user.firstname + ' ' + user.lastname %></h5>
+      <p class="card-text"><%= user.userbio %></p>
+      <%= link_to "My Posts", "#", class: "btn btn-primary" %>
+    </div>
+  </div>
+  <% end %>
+</div>
+

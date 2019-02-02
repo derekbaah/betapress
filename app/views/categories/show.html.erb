@@ -3,6 +3,7 @@
 <h3><strong>Category: <%= @category.name %></strong></h3>
 
 <div class="row">
+  <% if @posts.count > 0 %>
   <% @posts.each do |post| %>
   <div class="col-md-4">
     <div class="card">
@@ -15,4 +16,8 @@
   </div>
   <% end %>  
  </div>
+  
+  <% else %>
+  <p>No posts yet :(</p>
+  <% end %>
 </div>
