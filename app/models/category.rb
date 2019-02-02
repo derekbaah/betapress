@@ -5,4 +5,5 @@ class Category < ApplicationRecord
 	
 	validates_uniqueness_of :name 
 	validates :name , length: {minimum: 3 , maximum: 25}
+  validates :categories, presence: true
 end
